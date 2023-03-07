@@ -20,6 +20,15 @@ def encode(encoder):
 
     return encoded
 
+
+# Converts encoded password back to original password
+def decode(password):
+    decode_pass = ""
+    for char in password:
+        decode_pass += str((int(char) + 7) % 10)
+    return decode_pass
+
+
 def main():
     x = 0
     while x != 3:
@@ -34,12 +43,13 @@ def main():
 
         if u_input == 1:
             encoder = input("Please enter your password to encode: ")
+            encoded = encode(encoder)
             print("Your password has been encoded and stored!")
             print("")
 
         if u_input == 2:
-            encoded = encode(encoder)
-            print(f"The encoded password is {encoded}, and the original password is {encoder}.")
+            decoded = decode(encoded)
+            print(f"The encoded password is {encoded}, and the original password is {decoded}.")
             print("")
 
         if u_input == 3:
